@@ -52,9 +52,10 @@ fun DemoBottomNavigation(
 fun DemoTopAppBar(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val route = navBackStackEntry?.destination?.route.orEmpty()
+    val currentScreen = AppScreens(route)
     SmallTopAppBar(
         navigationIcon = {
-            AppScreens(route)?.icon?.let { iconToSet ->
+            currentScreen?.icon?.let { iconToSet ->
                 Icon(
                     imageVector = iconToSet,
                     contentDescription = null,
@@ -63,7 +64,9 @@ fun DemoTopAppBar(navController: NavHostController) {
             }
         },
         title = {
-            Text(route.uppercase())
+            currentScreen?.resourceId?.let { screenTitleRes ->
+                Text(stringResource(id = screenTitleRes))
+            }
         },
 
         // Material design suggests avoiding large areas of bright colors in dark theme. A common
