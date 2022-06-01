@@ -58,6 +58,7 @@ fun DemoTopAppBar(navController: NavHostController) {
                 when (route) {
                     "list" -> AppScreens.HomeNav.icon
                     "nava" -> AppScreens.NavA.icon
+                    // Should the app bar update for modals? This subjectively felt like an unexpected behavior to me.
                     else -> AppScreens.Detail.icon
                 }
             Icon(

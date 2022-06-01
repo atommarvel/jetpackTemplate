@@ -4,6 +4,7 @@ static def isLinuxOrMacOs() {
     return osName.contains('linux') || osName.contains('mac os') || osName.contains('macos')
 }
 
+// maybe mention these gradle tasks in the readme? maybe a getting started section?
 task copyGitHooks(type: Copy) {
     description 'Copies the git hooks from /git-hooks to the .git folder.'
     group 'git hooks'

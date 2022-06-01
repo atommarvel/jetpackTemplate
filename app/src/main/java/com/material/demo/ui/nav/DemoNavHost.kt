@@ -20,6 +20,7 @@ import com.material.demo.ui.home.ColorListBody
 @Suppress("LongMethod")
 @ExperimentalMaterialNavigationApi
 @Composable
+// File called DemoNavHost but function called PresNavHost. Was that intentional to account for scaling to multiple navhosts or something?
 fun PresNavHost(
     navController: NavHostController,
     viewModel: MainViewModel,
@@ -30,9 +31,24 @@ fun PresNavHost(
         startDestination = AppScreens.HomeNav.route,
         modifier = modifier
     ) {
+        /**
+         * This kinda depends on what you want the project to reflect:
+         * If the goal is for the template to be scalable to many more screens, it feels like each
+         * of the content params for these composable and bottomSheet calls for the builder would
+         * end up not being centralized in this PresNavHost composable in a project that has many
+         * screens. Would love to hear your thoughts on that and if you agree how you would structure
+         * doing such a thing.
+         * I've taken a stab at this in other projects and would love to compare notes :)
+         */
         composable(route = AppScreens.HomeNav.route) {
             ColorListBody(
                 onItemClicked = {
+                    /**
+                     * There are multiple places (here and below at the FeatABody call) that need
+                     * to both know how to correctly navigate to the detail screen. Maybe this logic
+                     * should be centralized in some sort of navigation service/manager that exposes
+                     * a function called something like `navToDetail(name: String)`?
+                     */
                     navController.navigate("${AppScreens.Detail.route}${it.name}")
                 },
                 viewModel.colorList,

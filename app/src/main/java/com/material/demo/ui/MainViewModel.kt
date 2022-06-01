@@ -8,6 +8,7 @@ class MainViewModel : ViewModel() {
     var colorList = listOf<ColorItem>()
 
     init {
+        // I feel like a nice added feature here for a template project would be for the colorList to be populated by an api call. Thoughts?
         colorList = StaticData.COLOR_MAP.values.toList()
     }
 }

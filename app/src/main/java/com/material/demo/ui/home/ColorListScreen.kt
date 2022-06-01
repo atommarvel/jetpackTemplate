@@ -40,7 +40,9 @@ fun ColorListBody(
     colorItems: List<ColorItem>?,
 ) {
     if (!colorItems.isNullOrEmpty()) {
+        // This can be val right?
         var userItems = remember { mutableStateListOf<ColorItem>() }
+        // What is the purpose of this? I'm missing something and want to learn!
         userItems.swapList(sortDate(false, colorItems))
 
         Surface(color = MaterialTheme.colorScheme.background) {
@@ -62,6 +64,7 @@ fun ColorListBody(
     }
 }
 
+// Date? Should this be sortName?
 fun sortDate(descending: Boolean, listIn: List<ColorItem>): List<ColorItem> {
     return if (descending) {
         listIn.sortedByDescending { it.name }

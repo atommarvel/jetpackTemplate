@@ -30,6 +30,7 @@ import com.material.demo.ui.theme.margin_standard
 fun DetailBody(
     colorItem: ColorItem,
 ) {
+    // It does not seem like ComposeTemplateTheme is needed here.
     ComposeTemplateTheme {
         Surface(
             color = MaterialTheme.colorScheme.background,
