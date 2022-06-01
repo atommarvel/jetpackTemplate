@@ -64,6 +64,8 @@ fun DemoTopAppBar(navController: NavHostController) {
             }
         },
         title = {
+            // Note that this is using the AppScreen.resourceId instead of the route now.
+            // Does that make sense to use it here?
             currentScreen?.resourceId?.let { screenTitleRes ->
                 Text(stringResource(id = screenTitleRes))
             }
