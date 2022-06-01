@@ -40,7 +40,7 @@ It also includes color definitions for all the original M2 colors.
 
 Love all the static analysis tooling. I noticed that the project's codestyle doesn't match the default intellij kotlin codestyle. 
 Specifically, the "Use import with '*' with X names" import rules is the first thing I noticed.
-Maybe it makes sense to provide the codestyle in the template? Would that just me a matter of making .idea/codeStyles/Project.xml not ignored?
+Maybe it makes sense to provide the codestyle in the template? Would that just be a matter of making .idea/codeStyles/Project.xml not ignored?
 
 I included static analysis tooling in the build for this project. I like to use these tools to maintain consistency, so include them in all my projects.
 
