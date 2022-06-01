@@ -51,23 +51,19 @@ fun DemoBottomNavigation(
 @Composable
 fun DemoTopAppBar(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val route = navBackStackEntry?.destination?.route
+    val route = navBackStackEntry?.destination?.route.orEmpty()
     SmallTopAppBar(
         navigationIcon = {
-            val iconToSet =
-                when (route) {
-                    "list" -> AppScreens.HomeNav.icon
-                    "nava" -> AppScreens.NavA.icon
-                    else -> AppScreens.Detail.icon
-                }
-            Icon(
-                imageVector = iconToSet,
-                contentDescription = null,
-                modifier = Modifier.padding(horizontal = margin_half)
-            )
+            AppScreens(route)?.icon?.let { iconToSet ->
+                Icon(
+                    imageVector = iconToSet,
+                    contentDescription = null,
+                    modifier = Modifier.padding(horizontal = margin_half)
+                )
+            }
         },
         title = {
-            Text(route.orEmpty().uppercase())
+            Text(route.uppercase())
         },
 
         // Material design suggests avoiding large areas of bright colors in dark theme. A common
