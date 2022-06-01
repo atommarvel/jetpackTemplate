@@ -18,10 +18,11 @@ sealed class AppScreens(val route: String, @StringRes val resourceId: Int, val i
          * @return a [AppScreens] that has a [AppScreens.route] that matches the passed in [route].
          */
         operator fun invoke(route: String): AppScreens? =
-            when(route) {
-                HomeNav.route -> HomeNav
-                NavA.route -> NavA
-                Detail.route -> Detail
+            when {
+                route == HomeNav.route -> HomeNav
+                route == NavA.route -> NavA
+                // not the most elegant way to check. Maybe the AppScreen should have a regex matcher?
+                route.startsWith(Detail.route) -> Detail
                 else -> {
                     Log.w("DemoApp", "The provided route '$route' is not known." )
                     null
