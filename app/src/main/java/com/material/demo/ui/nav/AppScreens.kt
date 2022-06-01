@@ -21,7 +21,14 @@ sealed class AppScreens(val route: String, @StringRes val resourceId: Int, val i
             when {
                 route == HomeNav.route -> HomeNav
                 route == NavA.route -> NavA
-                // not the most elegant way to check. Maybe the AppScreen should have a regex matcher?
+                /**
+                 * Not the most elegant way to check... Maybe the AppScreen should have a regex matcher?
+                 * Here's a starting point of where I've been playing around with representing screens with args in a project:
+                 *     - https://github.com/atommarvel/shears-for-kutt/blob/main/app/src/main/java/com/radiantmood/kuttit/nav/destination/DestinationSpec.kt
+                 *
+                 * Note that the project as a whole is nowhere near best practices or production readiness.
+                 * It's more of a testbed for playing around with things for me :)
+                 */
                 route.startsWith(Detail.route) -> Detail
                 else -> {
                     Log.w("DemoApp", "The provided route '$route' is not known." )
